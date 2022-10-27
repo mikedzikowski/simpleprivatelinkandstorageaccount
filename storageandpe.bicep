@@ -23,7 +23,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' existing 
   name: storageAccountName
 }
 
-module nic './nic.bicep' = {
+module nic './modules/nic.bicep' = {
   scope: resourceGroup(subscriptionId, resourceGroupName)
   name: nicName
   params:{
@@ -37,7 +37,7 @@ module nic './nic.bicep' = {
   ]
 }
 
-module privateEndpoints_storagepl_name_resource './privateEndpoint.bicep' = {
+module privateEndpoint './modules/privateEndpoint.bicep' = {
   scope: resourceGroup(subscriptionId, resourceGroupName)
   name: 'pename'
   params:{
