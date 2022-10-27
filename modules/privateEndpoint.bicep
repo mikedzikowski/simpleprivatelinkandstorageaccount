@@ -5,6 +5,7 @@ param location string = resourceGroup().location
 param storageAccountId string
 param privateDnsZoneId string
 param privatelinkDnsZoneConfig string
+param subnet string
 
 
 resource privateEndpoint 'Microsoft.Network/privateEndpoints@2020-11-01' = {
@@ -30,7 +31,7 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2020-11-01' = {
     ]
     manualPrivateLinkServiceConnections: []
     subnet: {
-      id: '${virtualNetworkId}/subnets/default'
+      id: '${virtualNetworkId}/subnets/${subnet}'
     }
     customDnsConfigs: []
   }

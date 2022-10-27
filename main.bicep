@@ -11,8 +11,6 @@ param privatelinkDnsZoneConfig string = 'privatelink-file-core-usgovcloudapi-net
 param subnetName string = 'default'
 param location string = 'usgovvirginia'
 
-var nicName = 'storagepl.nic.${storageAccountName}'
-
 resource rg 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   name: resourceGroupName
   location: location
@@ -33,6 +31,7 @@ module privateEndpoint './modules/privateEndpoint.bicep' = {
     virtualNetworkId:virtualNetworkId
     privateDnsZoneId: privateDnsZonesId
     privatelinkDnsZoneConfig: privatelinkDnsZoneConfig
+    subnet: subnetName
   }
   dependsOn: [
    rg
