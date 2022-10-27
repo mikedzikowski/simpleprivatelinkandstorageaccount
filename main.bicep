@@ -39,7 +39,7 @@ module nic './modules/nic.bicep' = {
 
 module privateEndpoint './modules/privateEndpoint.bicep' = {
   scope: resourceGroup(subscriptionId, resourceGroupName)
-  name: 'pename'
+  name: 'pe-${storageAccount}'
   params:{
     location: location
     storageAccountId: storageAccount.id
